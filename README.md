@@ -1,3 +1,5 @@
+You may visit https://dream-weaver-gen-ai.vercel.app to explore the build. However, please note that the story generation feature is currently disabled due to cost constraints associated with the API key, which has been deactivated.
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
