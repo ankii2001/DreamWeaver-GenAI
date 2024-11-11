@@ -85,7 +85,7 @@ function DreamWriter() {
 
     if (response.ok) {
       console.log("Email sent successfully!");
-      alert("Your story has been emailed!");
+      alert("Your story is currently in the queue, and processing will begin shortly!");
     } else {
       console.error("Failed to send email");
       alert("There was an issue sending your story. Please try again.");

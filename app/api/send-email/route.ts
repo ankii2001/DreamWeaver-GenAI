@@ -71,7 +71,7 @@ export async function POST(req: NextRequest) {
                   top: 120px;
                   left: 50%;
                   margin-left: -30%; /* Used margin instead of transform */
-                  height: 300px;
+                  height: 350px;
                   background-image: url('https://dream-weaver-gen-ai.vercel.app/images/logo.png');
                   background-size: contain;
                   background-repeat: no-repeat;
