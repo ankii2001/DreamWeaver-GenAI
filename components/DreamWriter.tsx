@@ -14,8 +14,15 @@ import { Frame } from "@gptscript-ai/gptscript";
 import renderEventMessage from "@/lib/renderEventMessage";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
+import nodemailer from "nodemailer";
 
 const storiesPath = "public/stories";
+
+// Function to validate email (basic check to avoid common ones like abc@gmail.com)
+const isValidEmail = (email: string) => {
+  const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+  return emailRegex.test(email) && !email.includes("abc@gmail.com");
+};
 
 function DreamWriter() {
   const [story, setStory] = useState<string>("");
@@ -26,6 +33,8 @@ function DreamWriter() {
   const [currentTool, setCurrentTool] = useState("");
   const [events, setEvents] = useState<Frame[]>([]);
   const router = useRouter();
+  const [email, setEmail] = useState<string>("");
+  const [isEmailValid, setIsEmailValid] = useState<boolean>(true);
 
   async function runScript() {
     setRunStarted(true);
@@ -53,6 +62,37 @@ function DreamWriter() {
       console.error("Failed to start streaming");
     }
   }
+
+  const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const newEmail = e.target.value;
+    setEmail(newEmail);
+    setIsEmailValid(isValidEmail(newEmail)); // Validate email
+  };
+
+  const dialogOpen = async () => {
+    if (!isEmailValid) {
+      alert("Please enter a valid email address.");
+      return;
+    }
+
+    const response = await fetch("api/send-email", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ story, pages, email: email }), // Pass email here
+    });
+
+    if (response.ok) {
+      console.log("Email sent successfully!");
+      alert("Your story has been emailed!");
+    } else {
+      console.error("Failed to send email");
+      alert("There was an issue sending your story. Please try again.");
+    }
+  };
+  
+  
 
   // async function handleStream(
   //   reader: ReadableStreamDefaultReader<Uint8Array>,
@@ -170,6 +210,14 @@ function DreamWriter() {
   return (
     <div className="flex flex-col container">
       <section className="flex-1 flex flex-col container border border-fuchsia-300 rounded-md p-5 space-y-2 lg:p-10">
+      <input
+        type="email"
+        value={email}
+        onChange={handleEmailChange}
+        className="p-2 border rounded text-sm"
+        placeholder="Enter your email"
+      />
+      {!isEmailValid && <span className="text-red-500 text-sm">Invalid email address.</span>}
         <Textarea
           value={story}
           onChange={(e) => setStory(e.target.value)}
@@ -192,10 +240,11 @@ function DreamWriter() {
         </Select>
 
         <Button
-          disabled={!story || !pages || runStarted}
+          disabled={!story || !pages || !email || runStarted}
           className="w-full"
           size="lg"
-          onClick={runScript}
+          // onClick={runScript}
+          onClick={dialogOpen}
         >
           Weave the Story
         </Button>
