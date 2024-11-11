@@ -54,6 +54,7 @@ export async function POST(req: NextRequest) {
                   max-width: 600px;
                   position: relative;
                   padding: 20px;
+                  margin-bottom: 30px;
               }
               .header {
                   margin-bottom: 20px;
@@ -76,6 +77,7 @@ export async function POST(req: NextRequest) {
                   background-repeat: no-repeat;
                   background-position: center;
                   z-index: 100;
+                  border-radius: 8px;
                   background-color: #f2f2f2; /* Fallback background color */
               }
               .content {
