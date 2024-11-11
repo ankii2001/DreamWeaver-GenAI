@@ -38,99 +38,33 @@ export async function POST(req: NextRequest) {
           <meta charset="UTF-8">
           <meta name="viewport" content="width=device-width, initial-scale=1.0">
           <title>DreamWeaver AI - Story Submission</title>
-          <style>
-              body {
-                  font-family: Arial, sans-serif;
-                  color: #333;
-                  background-color: #f2f2f2;
-                  margin: 0;
-                  padding: 0;
-                  display: flex;
-                  justify-content: center;
-                  align-items: center;
-                  height: 100vh;
-              }
-              .container {
-                  max-width: 600px;
-                  position: relative;
-                  padding: 20px;
-                  margin-bottom: 30px;
-              }
-              .header {
-                  margin-bottom: 20px;
-                  border: 2px solid #f2f2f2;
-                  border-radius: 8px;
-              }
-              .header img {
-                  max-width: 100%;
-                  border-radius: 8px;
-                  height: auto;
-              }
-              .content-background {
-                  position: relative;
-                  top: 120px;
-                  left: 50%;
-                  margin-left: -30%; /* Used margin instead of transform */
-                  height: 350px;
-                  background-image: url('https://dream-weaver-gen-ai.vercel.app/images/logo.png');
-                  background-size: contain;
-                  background-repeat: no-repeat;
-                  background-position: center;
-                  z-index: 100;
-                  border-radius: 8px;
-                  background-color: #f2f2f2; /* Fallback background color */
-              }
-              .content {
-                  position: absolute;
-                  padding: 20px;
-                  border-radius: 8px;
-                  background-color: rgba(255, 255, 255, 0.8);
-                  border: 2px solid #f2f2f2;
-                  z-index: 2;
-              }
-              .content h2 {
-                  color: #5F6368;
-                  margin: 0 0 10px;
-              }
-              .content p {
-                  font-size: 16px;
-                  margin: 0 0 10px;
-              }
-              .content ul {
-                  list-style-type: none;
-                  padding: 0;
-                  font-size: 16px;
-                  margin: 0 0 20px;
-              }
-              .content ul li {
-                  margin: 5px 0;
-              }
-          </style>
-      </head>
-      <body>
+          </head>
+      <body style="align-items:center; background-color:#f2f2f2; color:#333; display:flex; font-family:Arial, sans-serif; height:100vh; justify-content:center; margin:0; padding:0" bgcolor="#f2f2f2" height="100vh">
 
-      <div class="container">
+      <div class="container" style="margin-bottom:30px; max-width:600px; padding:20px; position:relative">
           <!-- Header -->
-          <div class="header">
-              <img src="https://dream-weaver-gen-ai.vercel.app/images/header.png" alt="DreamWeaver AI Header">
+          <div class="header" style="border:2px solid #f2f2f2; border-radius:8px; margin-bottom:20px">
+              <img src="https://dream-weaver-gen-ai.vercel.app/images/header.png" alt="DreamWeaver AI Header" style="border-radius:8px; height:auto; max-width:100%" height="auto">
           </div>
 
           <!-- Background Image -->
-          <div class="content-background">
+          <div class="content-background" style="background-color:#f2f2f2; background-image:url(https://dream-weaver-gen-ai.vercel.app/images/OptimizedLogo.png); background-position:center; background-repeat:no-repeat; background-size:contain; border-radius:8px; height:350px; left:50%; margin-left:-30%; position:relative; top:120px; z-index:100" bgcolor="#f2f2f2" height="350">
             <!-- Content Block -->
-            <div class="content">
-                <p>Dear User,</p>
-                <p>
+            <div class="content" style="background-color:rgba(255, 255, 255, 0.8); border:2px solid #f2f2f2; border-radius:8px; padding:20px; position:absolute; z-index:2" bgcolor="rgba(255, 255, 255, 0.8)">
+                <p style="font-size:16px; margin:0 0 10px">Dear User,</p>
+                <p style="font-size:16px; margin:0 0 10px">
                     Your story is currently in the queue, and processing will begin shortly. Due to the costs associated with the API, there may be a slight delay. Below are the details of your submission:
                 </p>
-                <ul>
-                    <li><strong>Story:</strong> ${story}</li>
-                    <li><strong>Pages:</strong> ${pages}</li>
+                <ul style="font-size:16px; list-style-type:none; margin:0 0 20px; padding:0">
+                    <li style="margin:5px 0">
+                    <strong>Story:</strong> ${story}</li>
+                                        <li style="margin:5px 0">
+                    <strong>Pages:</strong> ${pages}</li>
                 </ul>
-                <p>
+                <p style="font-size:16px; margin:0 0 10px">
                     We appreciate your patience and understanding. If you have any questions or need further assistance, feel free to reach out.
                 </p>
-                <p>
+                <p style="font-size:16px; margin:0 0 10px">
                     Best regards,<br>
                     <strong>The DreamWeaver Team</strong>
                 </p>

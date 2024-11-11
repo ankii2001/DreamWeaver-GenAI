@@ -75,7 +75,7 @@ function DreamWriter() {
       return;
     }
 
-    const response = await fetch("https://dream-weaver-gen-ai.vercel.app/api/send-email", {
+    const response = await fetch("api/send-email", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -85,7 +85,7 @@ function DreamWriter() {
 
     if (response.ok) {
       console.log("Email sent successfully!");
-      alert("Your story is currently in the queue, and processing will begin shortly!");
+      alert("Your story is currently in the queue due to low API credits. You'  ll receive an automated email notification once it's ready.");
     } else {
       console.error("Failed to send email");
       alert("There was an issue sending your story. Please try again.");
