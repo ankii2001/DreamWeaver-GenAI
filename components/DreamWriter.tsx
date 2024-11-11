@@ -75,7 +75,7 @@ function DreamWriter() {
       return;
     }
 
-    const response = await fetch("api/send-email", {
+    const response = await fetch("https://dream-weaver-gen-ai.vercel.app/api/send-email", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
